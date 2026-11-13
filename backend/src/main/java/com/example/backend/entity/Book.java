@@ -29,6 +29,13 @@ public class Book {
     protected Book() {
     }
 
+    public Book(String title, String author, String status, String memo) {
+        this.title = title;
+        this.author = author;
+        this.status = status == null ? "NOT_STARTED" : status;
+        this.memo = memo;
+    }
+
     public Long getId() {
         return id;
     }

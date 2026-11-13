@@ -7,14 +7,16 @@ public record BookResponse(
         Long id,
         String title,
         String author,
-        String status
+        String status,
+        String memo
 ) {
     public static BookResponse from(Book book) {
         return new BookResponse(
                 book.getId(),
                 book.getTitle(),
                 book.getAuthor(),
-                book.getStatus()
+                book.getStatus(),
+                book.getMemo()
         );
     }
 }

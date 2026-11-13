@@ -1,0 +1,56 @@
+
+### 1. 전체 책 조회
+GET http://localhost:8080/api/books
+
+### 2. 특정 책 조회
+GET http://localhost:8080/api/books/1
+
+### 3. 책 등록
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "테스트 책",
+  "author": "테스트 작가",
+  "status": "NOT_STARTED",
+  "memo": "API 테스트용 데이터"
+}
+
+### 4. 제목 누락 - 검증 실패 예상
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "",
+  "author": "테스트 작가",
+  "status": "NOT_STARTED",
+  "memo": ""
+}
+
+### 5. 잘못된 독서 상태 - 검증 실패 예상
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "title": "잘못된 상태 테스트",
+  "author": "테스트 작가",
+  "status": "UNKNOWN",
+  "memo": ""
+}
+
+### 6. 존재하지 않는 책 조회 - 404 예상
+GET http://localhost:8080/api/books/99999
+
+### 7. 존재하지 않는 책 수정 - 404 예상
+PUT http://localhost:8080/api/books/99999
+Content-Type: application/json
+
+{
+  "title": "없는 책",
+  "author": "테스트 작가",
+  "status": "READING",
+  "memo": ""
+}
+
+### 8. 존재하지 않는 책 삭제 - 404 예상
+DELETE http://localhost:8080/api/books/99999
